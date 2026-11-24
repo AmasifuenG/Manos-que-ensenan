@@ -1,0 +1,209 @@
+/* ==========================================================================
+   Manos que Enseñan - Estilos Complementarios
+   "Compartimos conocimientos, conservamos nuestra cultura"
+   Tipografía: Outfit (Títulos) & Plus Jakarta Sans (Cuerpo)
+   Paleta: Marfil (#FDFBF7), Texto (#1E1B26), Bordes (#E9E6DF), Lavanda & Coral
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+  --bg-marfil: #FDFBF7;
+  --text-dark: #1E1B26;
+  --border-soft: #E9E6DF;
+  
+  /* Lavanda / Morado (Tema Docente / Acentos) */
+  --lavanda-50: #F6F4FE;
+  --lavanda-100: #ECE7FD;
+  --lavanda-200: #D9CEFB;
+  --lavanda-500: #8B5CF6;
+  --lavanda-600: #7C3AED;
+  --lavanda-700: #6D28D9;
+  --lavanda-900: #4C1D95;
+
+  /* Rosa Coral (Tema Participante / Acentos) */
+  --coral-50: #FFF3F4;
+  --coral-100: #FFE4E7;
+  --coral-200: #FECDD3;
+  --coral-500: #F43F5E;
+  --coral-600: #E11D48;
+  --coral-700: #BE123C;
+
+  /* Ámbar & Terracota (Identidad artesanal) */
+  --ambar-500: #D97706;
+  --ambar-100: #FEF3C7;
+  --terracota-500: #C25E3E;
+  --terracota-100: #FBECE7;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-dark);
+  background-color: var(--bg-marfil);
+}
+
+.font-heading {
+  font-family: 'Outfit', sans-serif;
+}
+
+.font-body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #F4EFE6;
+}
+::-webkit-scrollbar-thumb {
+  background: #D5CEC2;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B8B0A2;
+}
+
+/* Texture Pattern Overlay for Artisanal Feel */
+.bg-artisan-texture {
+  background-color: #FDFBF7;
+  background-image: radial-gradient(#E8E3D7 0.8px, transparent 0.8px), radial-gradient(#E8E3D7 0.8px, #FDFBF7 0.8px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+.bg-pattern-loom {
+  background-image: repeating-linear-gradient(45deg, rgba(233, 230, 223, 0.4) 0px, rgba(233, 230, 223, 0.4) 2px, transparent 2px, transparent 8px);
+}
+
+/* Card Hover Elevation */
+.card-craft {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid var(--border-soft);
+}
+.card-craft:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px -10px rgba(30, 27, 38, 0.08), 0 4px 12px -2px rgba(30, 27, 38, 0.04);
+}
+
+/* Toast Animations */
+@keyframes toastSlideDown {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -100%) scale(0.9);
+  }
+  70% {
+    transform: translate(-50%, 8px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+@keyframes toastSlideUp {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -100%) scale(0.9);
+  }
+}
+
+.toast-enter {
+  animation: toastSlideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.toast-exit {
+  animation: toastSlideUp 0.3s ease-in forwards;
+}
+
+/* Floating animation for illustrations */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.8deg);
+  }
+}
+
+.animate-float {
+  animation: floatGentle 6s ease-in-out infinite;
+}
+
+/* Subtle pulse for live status badge */
+@keyframes pulseLive {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.15);
+  }
+}
+
+.pulse-dot {
+  animation: pulseLive 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Interactive Checkbox / Pill for Form */
+.craft-pill {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.craft-pill input[type="checkbox"],
+.craft-pill input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.craft-pill .pill-box {
+  transition: all 0.25s ease;
+}
+
+.craft-pill input:checked + .pill-box {
+  border-color: var(--coral-500);
+  background-color: var(--coral-50);
+  box-shadow: 0 4px 14px -3px rgba(244, 63, 94, 0.25);
+}
+
+.craft-pill.theme-docente input:checked + .pill-box {
+  border-color: var(--lavanda-600);
+  background-color: var(--lavanda-50);
+  box-shadow: 0 4px 14px -3px rgba(124, 58, 237, 0.25);
+}
+
+/* Modal Backdrop Blur */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Video demo simulation */
+.video-screen {
+  background: radial-gradient(circle at center, #2E2839 0%, #17151D 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.video-progress-bar {
+  transition: width 0.2s linear;
+}
+
+/* Glassmorphism accents */
+.glass-panel {
+  background: rgba(253, 251, 247, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(233, 230, 223, 0.9);
+}
