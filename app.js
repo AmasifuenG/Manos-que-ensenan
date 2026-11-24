@@ -1,6 +1,8 @@
 /**
  * Manos que Enseñan - Lógica de la Aplicación
- * "Compartimos conocimientos, conservamos nuestra cultura"
+ * Paleta Inspirada en la Naturaleza Amazónica y Tradición de Loreto:
+ * Verde bosque (#28563E), Marrón artesanal (#A66B3F), Beige natural (#F3E5C8),
+ * Amarillo mostaza (#D9A441), Blanco crema (#FFFDF7).
  * Desarrollado por Gracia Milagros y Zuleyka Vilchez - Two girl studio
  */
 
@@ -19,26 +21,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const toastIcon = type === 'warning'
-      ? `<svg class="w-6 h-6 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      ? `<svg class="w-6 h-6 text-amarillo-mostaza shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
          </svg>`
       : type === 'success'
-      ? `<svg class="w-6 h-6 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      ? `<svg class="w-6 h-6 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
          </svg>`
-      : `<svg class="w-6 h-6 text-lavanda-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      : `<svg class="w-6 h-6 text-amarillo-mostaza shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
          </svg>`;
 
-    const borderColor = type === 'warning' ? 'border-amber-400' : type === 'success' ? 'border-emerald-400' : 'border-lavanda-500';
+    const borderColor = type === 'warning' ? 'border-amarillo-mostaza' : type === 'success' ? 'border-emerald-500' : 'border-marron-artesanal';
 
     toastContainer.innerHTML = `
-      <div id="active-toast" class="toast-enter flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-[#1E1B26]/95 text-white shadow-2xl border ${borderColor} backdrop-blur-md max-w-md w-full">
+      <div id="active-toast" class="toast-enter flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-[#1E2E24]/95 text-blanco-crema shadow-2xl border ${borderColor} backdrop-blur-md max-w-md w-full">
         ${toastIcon}
         <div class="flex-1 text-sm font-medium leading-snug">
           ${message}
         </div>
-        <button type="button" id="toast-close-btn" class="p-1 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors">
+        <button type="button" id="toast-close-btn" class="p-1 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
@@ -101,18 +103,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function setTalleresTab(active) {
     if (active === 'presenciales') {
-      tabPresencialesBtn.classList.add('bg-white', 'text-texto-oscuro', 'shadow-sm', 'border-[#E9E6DF]');
-      tabPresencialesBtn.classList.remove('text-gray-500', 'hover:text-texto-oscuro');
-      tabTutorialesBtn.classList.remove('bg-white', 'text-texto-oscuro', 'shadow-sm', 'border-[#E9E6DF]');
-      tabTutorialesBtn.classList.add('text-gray-500', 'hover:text-texto-oscuro');
+      tabPresencialesBtn.classList.add('bg-verde-bosque', 'text-white', 'shadow-sm');
+      tabPresencialesBtn.classList.remove('bg-transparent', 'text-texto-oscuro/80', 'hover:text-verde-bosque');
+      tabTutorialesBtn.classList.remove('bg-verde-bosque', 'text-white', 'shadow-sm');
+      tabTutorialesBtn.classList.add('bg-transparent', 'text-texto-oscuro/80', 'hover:text-verde-bosque');
 
       viewPresenciales.classList.remove('hidden');
       viewTutoriales.classList.add('hidden');
     } else {
-      tabTutorialesBtn.classList.add('bg-white', 'text-texto-oscuro', 'shadow-sm', 'border-[#E9E6DF]');
-      tabTutorialesBtn.classList.remove('text-gray-500', 'hover:text-texto-oscuro');
-      tabPresencialesBtn.classList.remove('bg-white', 'text-texto-oscuro', 'shadow-sm', 'border-[#E9E6DF]');
-      tabPresencialesBtn.classList.add('text-gray-500', 'hover:text-texto-oscuro');
+      tabTutorialesBtn.classList.add('bg-verde-bosque', 'text-white', 'shadow-sm');
+      tabTutorialesBtn.classList.remove('bg-transparent', 'text-texto-oscuro/80', 'hover:text-verde-bosque');
+      tabPresencialesBtn.classList.remove('bg-verde-bosque', 'text-white', 'shadow-sm');
+      tabPresencialesBtn.classList.add('bg-transparent', 'text-texto-oscuro/80', 'hover:text-verde-bosque');
 
       viewTutoriales.classList.remove('hidden');
       viewPresenciales.classList.add('hidden');
@@ -134,21 +136,21 @@ document.addEventListener('DOMContentLoaded', () => {
       docente: 'Mama Rosaura Quispe',
       duracion: '24 minutos',
       nivel: 'Intermedio',
-      resumen: 'Aprende el urdido de hilos de lana de ovino, la colocación de lizos y el primer diseño del peine telar según la tradición de las comunidades altoandinas.',
+      resumen: 'Aprende el urdido de hilos de algodón y lanas teñidas con cortezas nativas de Loreto, la colocación de lizos y el primer diseño del telar tradicional.',
       materiales: [
-        'Telar de cintura de madera dura con espadas de batán',
-        'Madejas de lana teñidas artesanalmente (cochinilla y nogal)',
+        'Telar de cintura de madera dura amazónica con espadas de batán',
+        'Madejas de algodón teñidas artesanalmente con corteza de nogal y achiote',
         'Cuchillo de hueso para tupir la trama',
         'Cuerda de sujeción para la cintura con faja acolchada'
       ],
       pasos: [
         'Paso 1: Armado de la urdimbre manteniendo una tensión constante entre estacas.',
         'Paso 2: Fijación del telar a un punto sólido y ajuste ergonómico a la cintura.',
-        'Paso 3: Separación de hebras pares e impares con los lizos de caña.',
+        'Paso 3: Separación de hebras pares e impares con los lizos de caña brava.',
         'Paso 4: Inserción de la trama mediante la lanzadera y batido suave con la espada.',
         'Paso 5: Remate de orillos para evitar deshilachados con puntada ancestral.'
       ],
-      consejo: 'El secreto está en respirar con cada movimiento de la espada; el tejido refleja el estado de ánimo de quien lo crea.'
+      consejo: 'El secreto está en respirar con cada movimiento de la espada; el tejido refleja el ritmo sereno del río y la concentración de quien lo crea.'
     },
     'ceramica': {
       titulo: 'Modelado y Bruñido de Vasijas con Arcilla Local',
@@ -158,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
       nivel: 'Básico / Todos los niveles',
       resumen: 'Técnica de rollo y pellizco para crear una múcura tradicional, seguida por el frotado con cantos rodados de río para lograr un bruñido impermeable sin esmalte.',
       materiales: [
-        '1.5 kg de arcilla roja decantada y purificada',
+        '1.5 kg de arcilla roja ribereña decantada y purificada',
         'Piedras de río perfectamente pulidas (cantos rodados de ágata o cuarzo)',
         'Retazos de cuero húmedo y raspadores de calabaza (mate)',
         'Agua tibia en cuenco de barro'
@@ -170,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Paso 4: Alisado exterior e interior usando la lámina de mate o cuchara de madera.',
         'Paso 5: Bruñido en estado de cuero con piedra de río hasta obtener brillo natural.'
       ],
-      consejo: 'Deja secar la pieza siempre bajo sombra y envuelta en tela para evitar grietas por corrientes de aire.'
+      consejo: 'Deja secar la pieza siempre bajo sombra y envuelta en tela para evitar grietas por el calor húmedo.'
     },
     'bordado': {
       titulo: 'Simbología Ancestral y Puntos del Bordado Tradicional',
@@ -180,8 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
       nivel: 'Básico',
       resumen: 'Descubre los trazos iconográficos que narran la cosmovisión comunitaria: la flor de cantuta, la espiral del agua y los caminos de las cordilleras.',
       materiales: [
-        'Tela de bayeta o lino crudo de algodón nativo',
-        'Hilos de estambre o seda vegetal en tonos vivos',
+        'Tela de lino o tocuyo crudo de algodón nativo',
+        'Hilos de estambre o seda vegetal teñidos con achiote y corteza',
         'Agujas capoteras de punta roma',
         'Bastidor circular de madera con tornillo de ajuste'
       ],
@@ -189,20 +191,20 @@ document.addEventListener('DOMContentLoaded', () => {
         'Paso 1: Calcado del patrón tradicional mediante puntos de tiza orgánica.',
         'Paso 2: Montaje tenso de la tela en el bastidor sin deformar la trama.',
         'Paso 3: Puntada de cadeneta tupida para delinear los contornos sagrados.',
-        'Paso 4: Relleno en relieve combinando colores cálidos y fríos para dar volumen.',
+        'Paso 4: Relleno en relieve combinando colores cálidos y verdes para dar volumen.',
         'Paso 5: Fijación de nudos invisibles en el reverso.'
       ],
-      consejo: 'Cada color cuenta una historia: los rojos son la sangre y la fuerza vital; los verdes y amarillos, la siembra y el sol.'
+      consejo: 'Cada color cuenta una historia: los tonos tierra son la fertilidad y la madera; los verdes y mostaza, el follaje y el sol protector.'
     },
     'cesteria': {
-      titulo: 'Tejido Espiral con Fibras de Palma y Caña',
+      titulo: 'Tejido Espiral con Fibras de Palma Chambira',
       artesania: 'Cestería vegetal',
       docente: 'Don Braulio Champi',
       duracion: '20 minutos',
       nivel: 'Intermedio',
       resumen: 'Manejo de fibras de chambira y tamshi: preparación, humedecido, torsión manual y tejido helicoidal para canastos utilitarios de gran resistencia.',
       materiales: [
-        'Fibras vegetales hidratadas (palma chambira o junco)',
+        'Fibras vegetales hidratadas de palma chambira',
         'Punzón de madera dura o aguja de cestería',
         'Tijeras de poda o cuchilla afilada',
         'Recipiente con agua para humedecer periódicamente las hebras'
@@ -214,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Paso 4: Expansión de las paredes mediante inclinación progresiva del haz.',
         'Paso 5: Remate trenzado del borde superior con doble refuerzo.'
       ],
-      consejo: 'Nunca dejes que la fibra se reseque mientras tejes; una fibra bien hidratada es dócil y no se quiebra.'
+      consejo: 'Nunca dejes que la fibra se reseque mientras tejes; una fibra bien hidratada es dócil y jamás se quiebra.'
     }
   };
 
@@ -244,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const matList = document.getElementById('tutorial-modal-materials');
     matList.innerHTML = data.materiales.map(m => `
       <li class="flex items-start gap-2.5 text-sm text-[#1E1B26]/80">
-        <span class="w-1.5 h-1.5 rounded-full bg-terracota-500 mt-2 shrink-0"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-marron-artesanal mt-2 shrink-0"></span>
         <span>${m}</span>
       </li>
     `).join('');
@@ -252,8 +254,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Pasos
     const pasosList = document.getElementById('tutorial-modal-steps');
     pasosList.innerHTML = data.pasos.map((p, idx) => `
-      <div class="p-3.5 rounded-xl bg-white/70 border border-[#E9E6DF] text-sm">
-        <span class="font-bold text-lavanda-700 block mb-1">Etapa ${idx + 1}</span>
+      <div class="p-3.5 rounded-xl bg-blanco-crema border border-borde-tierra text-sm">
+        <span class="font-bold text-verde-bosque block mb-1">Etapa ${idx + 1}</span>
         <p class="text-[#1E1B26]/90 leading-relaxed">${p}</p>
       </div>
     `).join('');
@@ -343,16 +345,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function setVolunteerRole(role) {
     if (role === 'docente') {
-      // Activar pestaña docente
-      tabBtnDocente.classList.add('bg-lavanda-600', 'text-white', 'shadow-md');
-      tabBtnDocente.classList.remove('text-[#1E1B26]/70', 'hover:text-lavanda-700', 'bg-transparent');
-      tabBtnParticipante.classList.remove('bg-coral-500', 'text-white', 'shadow-md');
-      tabBtnParticipante.classList.add('text-[#1E1B26]/70', 'hover:text-coral-600', 'bg-transparent');
+      // Activar pestaña docente con Marrón artesanal
+      tabBtnDocente.classList.add('bg-marron-artesanal', 'text-white', 'shadow-md');
+      tabBtnDocente.classList.remove('text-[#1E1B26]/70', 'hover:text-marron-artesanal', 'bg-transparent');
+      tabBtnParticipante.classList.remove('bg-verde-bosque', 'text-white', 'shadow-md');
+      tabBtnParticipante.classList.add('text-[#1E1B26]/70', 'hover:text-verde-bosque', 'bg-transparent');
 
       // Modificar Header dinámicamente
       if (registroHeaderBadge) {
         registroHeaderBadge.textContent = 'Portal de Maestros Sabios';
-        registroHeaderBadge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-lavanda-100 text-lavanda-800 border border-lavanda-200';
+        registroHeaderBadge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#F5ECE4] text-[#784825] border border-marron-artesanal/40';
       }
       if (registroHeaderTitle) {
         registroHeaderTitle.textContent = 'Registro de Docente Artesano Voluntario';
@@ -361,22 +363,22 @@ document.addEventListener('DOMContentLoaded', () => {
         registroHeaderSubtitle.textContent = 'Comparte tus conocimientos ancestrales y ayuda a formar a la nueva generación de custodios de nuestra cultura.';
       }
       if (registroContainer) {
-        registroContainer.className = 'bg-white rounded-3xl p-6 sm:p-10 shadow-xl border-2 border-lavanda-200 transition-all duration-300';
+        registroContainer.className = 'bg-blanco-crema rounded-3xl p-6 sm:p-10 shadow-xl border-2 border-marron-artesanal transition-all duration-300';
       }
 
       formDocente.classList.remove('hidden');
       formParticipante.classList.add('hidden');
     } else {
-      // Activar pestaña participante
-      tabBtnParticipante.classList.add('bg-coral-500', 'text-white', 'shadow-md');
-      tabBtnParticipante.classList.remove('text-[#1E1B26]/70', 'hover:text-coral-600', 'bg-transparent');
-      tabBtnDocente.classList.remove('bg-lavanda-600', 'text-white', 'shadow-md');
-      tabBtnDocente.classList.add('text-[#1E1B26]/70', 'hover:text-lavanda-700', 'bg-transparent');
+      // Activar pestaña participante con Verde bosque
+      tabBtnParticipante.classList.add('bg-verde-bosque', 'text-white', 'shadow-md');
+      tabBtnParticipante.classList.remove('text-[#1E1B26]/70', 'hover:text-verde-bosque', 'bg-transparent');
+      tabBtnDocente.classList.remove('bg-marron-artesanal', 'text-white', 'shadow-md');
+      tabBtnDocente.classList.add('text-[#1E1B26]/70', 'hover:text-marron-artesanal', 'bg-transparent');
 
       // Modificar Header dinámicamente
       if (registroHeaderBadge) {
         registroHeaderBadge.textContent = 'Portal de Aprendices Comunitarios';
-        registroHeaderBadge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-coral-100 text-coral-700 border border-coral-200';
+        registroHeaderBadge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#EBF2EE] text-[#1A3D2B] border border-verde-bosque/40';
       }
       if (registroHeaderTitle) {
         registroHeaderTitle.textContent = 'Inscripción de Aprendiz Comunitario';
@@ -385,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
         registroHeaderSubtitle.textContent = 'Aprende gratuitamente un oficio tradicional directamente de los maestros artesanos de nuestra comunidad.';
       }
       if (registroContainer) {
-        registroContainer.className = 'bg-white rounded-3xl p-6 sm:p-10 shadow-xl border-2 border-coral-200 transition-all duration-300';
+        registroContainer.className = 'bg-blanco-crema rounded-3xl p-6 sm:p-10 shadow-xl border-2 border-verde-bosque transition-all duration-300';
       }
 
       formParticipante.classList.remove('hidden');
@@ -453,9 +455,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (selectionCountBadge) {
       selectionCountBadge.textContent = `${count} / 3 seleccionados`;
       if (count === 3) {
-        selectionCountBadge.className = 'text-xs font-semibold px-2.5 py-1 rounded-full bg-coral-100 text-coral-700 border border-coral-200';
+        selectionCountBadge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-amarillo-mostaza text-texto-oscuro border border-marron-artesanal/30';
       } else {
-        selectionCountBadge.className = 'text-xs font-semibold px-2.5 py-1 rounded-full bg-[#E9E6DF] text-[#1E1B26]/80';
+        selectionCountBadge.className = 'text-xs font-semibold px-2.5 py-1 rounded-full bg-beige-natural text-texto-oscuro';
       }
     }
 
@@ -589,39 +591,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const summaryHTML = `
         <div class="space-y-4 text-left">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lavanda-100 text-lavanda-800 text-xs font-bold border border-lavanda-200">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F5ECE4] text-[#784825] text-xs font-bold border border-marron-artesanal/40">
             <span>✨</span> Registro Exitoso como Docente Artesano
           </div>
           
-          <div class="bg-gray-50 rounded-2xl p-4 border border-[#E9E6DF] space-y-2.5 text-sm">
-            <div class="flex justify-between border-b border-gray-200 pb-2">
-              <span class="text-gray-500 font-medium">Nombre completo:</span>
-              <span class="font-bold text-[#1E1B26] text-right">${nombre} (${edad} años)</span>
+          <div class="bg-blanco-crema rounded-2xl p-4 border border-borde-tierra space-y-2.5 text-sm">
+            <div class="flex justify-between border-b border-borde-tierra/60 pb-2">
+              <span class="text-gray-600 font-medium">Nombre completo:</span>
+              <span class="font-bold text-verde-bosque text-right">${nombre} (${edad} años)</span>
             </div>
-            <div class="flex justify-between border-b border-gray-200 pb-2">
-              <span class="text-gray-500 font-medium">Contacto:</span>
-              <span class="font-medium text-[#1E1B26] text-right">${correo} | ${telefono}</span>
+            <div class="flex justify-between border-b border-borde-tierra/60 pb-2">
+              <span class="text-gray-600 font-medium">Contacto:</span>
+              <span class="font-medium text-texto-oscuro text-right">${correo} | ${telefono}</span>
             </div>
-            <div class="flex justify-between border-b border-gray-200 pb-2">
-              <span class="text-gray-500 font-medium">Especialidad:</span>
-              <span class="font-bold text-lavanda-700 text-right">${especialidad}</span>
+            <div class="flex justify-between border-b border-borde-tierra/60 pb-2">
+              <span class="text-gray-600 font-medium">Especialidad:</span>
+              <span class="font-bold text-marron-artesanal text-right">${especialidad}</span>
             </div>
-            <div class="flex justify-between border-b border-gray-200 pb-2">
-              <span class="text-gray-500 font-medium">Días disponibles:</span>
-              <span class="font-medium text-[#1E1B26] text-right">${diasChecked.join(', ')}</span>
+            <div class="flex justify-between border-b border-borde-tierra/60 pb-2">
+              <span class="text-gray-600 font-medium">Días disponibles:</span>
+              <span class="font-medium text-texto-oscuro text-right">${diasChecked.join(', ')}</span>
             </div>
-            <div class="flex justify-between border-b border-gray-200 pb-2">
-              <span class="text-gray-500 font-medium">Turnos y Rango:</span>
-              <span class="font-medium text-[#1E1B26] text-right">${turnosChecked.join(', ')} (${horaDesde} a ${horaHasta})</span>
+            <div class="flex justify-between border-b border-borde-tierra/60 pb-2">
+              <span class="text-gray-600 font-medium">Turnos y Rango:</span>
+              <span class="font-medium text-texto-oscuro text-right">${turnosChecked.join(', ')} (${horaDesde} a ${horaHasta})</span>
             </div>
             <div class="flex justify-between pt-1">
-              <span class="text-gray-500 font-medium">Sede Comunal:</span>
-              <span class="font-medium text-gray-700 text-right">AA.HH. Santa Rosa Pampachica, mz. lote 36</span>
+              <span class="text-gray-600 font-medium">Sede Comunal:</span>
+              <span class="font-medium text-texto-oscuro text-right">AA.HH. Santa Rosa Pampachica, mz. lote 36</span>
             </div>
           </div>
 
-          <div class="p-3.5 rounded-xl bg-lavanda-50 border border-lavanda-200 text-xs text-lavanda-900 leading-relaxed">
-            <strong>¡Gracias por tu vocación y generosidad!</strong> Nuestro coordinador comunitario se comunicará contigo vía WhatsApp o llamada en un plazo de 24 a 48 horas para coordinar tu inducción y bienvenida al equipo de maestros.
+          <div class="p-3.5 rounded-xl bg-[#F5ECE4] border border-marron-artesanal/30 text-xs text-[#784825] leading-relaxed">
+            <strong>¡Gracias por tu generosidad y compromiso!</strong> Nuestro coordinador comunitario de Loreto se comunicará contigo vía WhatsApp o llamada en un plazo de 24 a 48 horas para coordinar tu bienvenida al equipo de maestros.
           </div>
         </div>
       `;
@@ -629,7 +631,7 @@ document.addEventListener('DOMContentLoaded', () => {
       openConfirmationModal(summaryHTML, () => {
         formDocente.reset();
         docenteOtrosContainer.classList.add('hidden');
-        showToast('¡Registro de docente enviado correctamente! Bienvenido/a.', 'success');
+        showToast('¡Registro de docente enviado correctamente! Bienvenido/a a la comunidad.', 'success');
       });
     });
   }
@@ -666,36 +668,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const summaryHTML = `
         <div class="space-y-4 text-left">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-coral-100 text-coral-800 text-xs font-bold border border-coral-200">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EBF2EE] text-[#1A3D2B] text-xs font-bold border border-verde-bosque/40">
             <span>🎉</span> Inscripción Exitosa de Aprendiz
           </div>
           
-          <div class="bg-gray-50 rounded-2xl p-4 border border-[#E9E6DF] space-y-2.5 text-sm">
-            <div class="flex justify-between border-b border-gray-200 pb-2">
-              <span class="text-gray-500 font-medium">Nombre completo:</span>
-              <span class="font-bold text-[#1E1B26] text-right">${nombre} (${edad} años)</span>
+          <div class="bg-blanco-crema rounded-2xl p-4 border border-borde-tierra space-y-2.5 text-sm">
+            <div class="flex justify-between border-b border-borde-tierra/60 pb-2">
+              <span class="text-gray-600 font-medium">Nombre completo:</span>
+              <span class="font-bold text-verde-bosque text-right">${nombre} (${edad} años)</span>
             </div>
-            <div class="flex justify-between border-b border-gray-200 pb-2">
-              <span class="text-gray-500 font-medium">Contacto:</span>
-              <span class="font-medium text-[#1E1B26] text-right">${correo} | ${telefono}</span>
+            <div class="flex justify-between border-b border-borde-tierra/60 pb-2">
+              <span class="text-gray-600 font-medium">Contacto:</span>
+              <span class="font-medium text-texto-oscuro text-right">${correo} | ${telefono}</span>
             </div>
-            <div class="border-b border-gray-200 pb-2">
-              <span class="text-gray-500 font-medium block mb-1">Talleres seleccionados (${checkedCrafts.length}/3):</span>
+            <div class="border-b border-borde-tierra/60 pb-2">
+              <span class="text-gray-600 font-medium block mb-1">Talleres seleccionados (${checkedCrafts.length}/3):</span>
               <div class="flex flex-wrap gap-1.5 mt-1">
-                ${checkedCrafts.map(c => `<span class="px-2.5 py-1 rounded-lg bg-coral-50 text-coral-700 border border-coral-200 text-xs font-semibold">${c}</span>`).join('')}
+                ${checkedCrafts.map(c => `<span class="px-2.5 py-1 rounded-lg bg-[#EBF2EE] text-verde-bosque border border-verde-bosque/30 text-xs font-semibold">${c}</span>`).join('')}
               </div>
             </div>
-            <div class="flex justify-between border-b border-gray-200 pb-2">
-              <span class="text-gray-500 font-medium">Fecha de inicio:</span>
-              <span class="font-bold text-[#1E1B26] text-right">${fecha}</span>
+            <div class="flex justify-between border-b border-borde-tierra/60 pb-2">
+              <span class="text-gray-600 font-medium">Fecha de inicio:</span>
+              <span class="font-bold text-marron-artesanal text-right">${fecha}</span>
             </div>
             <div class="flex justify-between pt-1">
-              <span class="text-gray-500 font-medium">Sede fija asignada:</span>
-              <span class="font-semibold text-gray-800 text-right text-xs max-w-[210px]">${sede}</span>
+              <span class="text-gray-600 font-medium">Sede fija asignada:</span>
+              <span class="font-semibold text-verde-bosque text-right text-xs max-w-[210px]">${sede}</span>
             </div>
           </div>
 
-          <div class="p-3.5 rounded-xl bg-coral-50 border border-coral-200 text-xs text-coral-900 leading-relaxed">
+          <div class="p-3.5 rounded-xl bg-[#FAF4E8] border border-marron-artesanal/30 text-xs text-marron-artesanal leading-relaxed">
             <strong>¡Tu cupo ha sido reservado!</strong> Los talleres son 100% gratuitos e incluyen materiales de práctica básica en la casa comunal. Te enviaremos tu ficha de confirmación con el horario exacto por WhatsApp.
           </div>
         </div>
@@ -709,7 +711,7 @@ document.addEventListener('DOMContentLoaded', () => {
           fechaInput.value = today;
         }
         updateParticipantCounter();
-        showToast('¡Inscripción confirmada! Te esperamos con los brazos abiertos.', 'success');
+        showToast('¡Inscripción confirmada! Te esperamos en la casa comunal.', 'success');
       });
     });
   }
