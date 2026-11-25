@@ -682,10 +682,14 @@
         <!-- ========================================== -->
         <!-- VISTA 2: TUTORIALES Y GUÍAS PASO A PASO -->
         <!-- ========================================== -->
-        <div id="view-tutoriales" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div id="tutorials-container" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           
           <!-- Tutorial 1: Telar -->
-          <div class="card-craft rounded-3xl p-6 flex flex-col justify-between">
+          <div class="card-craft rounded-3xl p-6 flex flex-col justify-between"
+               data-tutorial-id="telar"
+               data-video-url="https://www.youtube.com/embed/nZsZ8GhuP8Y?si=Liab5pdnWkj9iQz6&autoplay=1"
+               data-tutorial-title="Fundamentos del Tejido en Telar"
+               data-tutorial-desc="Técnica de urdimbre y colocación de lizos para crear piezas textiles con tintes vegetales amazónicos.">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-xs font-bold text-marron-artesanal">
                 <span class="px-2.5 py-1 rounded-md bg-[#EBF2EE] text-verde-bosque">Video & Guía</span>
@@ -702,14 +706,23 @@
               </p>
             </div>
             <!-- Botón Secundario: Amarillo Mostaza -->
-            <button type="button" class="btn-open-tutorial mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-xs text-texto-oscuro bg-amarillo-mostaza hover:bg-mostaza-oscuro transition-colors flex items-center justify-center gap-1.5 shadow-sm" data-tutorial-id="telar">
+            <button type="button" 
+                    class="btn-open-tutorial mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-xs text-texto-oscuro bg-amarillo-mostaza hover:bg-mostaza-oscuro transition-colors flex items-center justify-center gap-1.5 shadow-sm active:scale-95" 
+                    data-tutorial-id="telar"
+                    data-video-url="https://www.youtube.com/embed/nZsZ8GhuP8Y?si=Liab5pdnWkj9iQz6&autoplay=1"
+                    data-tutorial-title="Fundamentos del Tejido en Telar"
+                    data-tutorial-desc="Técnica de urdimbre y colocación de lizos para crear piezas textiles con tintes vegetales amazónicos.">
               <span>Ver guía y video</span>
               <svg class="w-3.5 h-3.5 text-verde-bosque" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
             </button>
           </div>
 
           <!-- Tutorial 2: Cerámica -->
-          <div class="card-craft rounded-3xl p-6 flex flex-col justify-between">
+          <div class="card-craft rounded-3xl p-6 flex flex-col justify-between"
+               data-tutorial-id="ceramica"
+               data-video-url="https://www.youtube.com/embed/gQuGjJzzlfA?si=0F5n7zfoiSa3tC88&autoplay=1"
+               data-tutorial-title="Modelado y Bruñido con Piedra"
+               data-tutorial-desc="Modelado a pellizco y frotado con cuarzo de río para lograr vasijas impermeables sin químicos.">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-xs font-bold text-marron-artesanal">
                 <span class="px-2.5 py-1 rounded-md bg-[#F5ECE4] text-marron-artesanal">Video & Guía</span>
@@ -725,14 +738,23 @@
                 Modelado a pellizco y frotado con cuarzo de río para lograr vasijas impermeables sin químicos.
               </p>
             </div>
-            <button type="button" class="btn-open-tutorial mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-xs text-texto-oscuro bg-amarillo-mostaza hover:bg-mostaza-oscuro transition-colors flex items-center justify-center gap-1.5 shadow-sm" data-tutorial-id="ceramica">
+            <button type="button" 
+                    class="btn-open-tutorial mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-xs text-texto-oscuro bg-amarillo-mostaza hover:bg-mostaza-oscuro transition-colors flex items-center justify-center gap-1.5 shadow-sm active:scale-95" 
+                    data-tutorial-id="ceramica"
+                    data-video-url="https://www.youtube.com/embed/gQuGjJzzlfA?si=0F5n7zfoiSa3tC88&autoplay=1"
+                    data-tutorial-title="Modelado y Bruñido con Piedra"
+                    data-tutorial-desc="Modelado a pellizco y frotado con cuarzo de río para lograr vasijas impermeables sin químicos.">
               <span>Ver guía y video</span>
               <svg class="w-3.5 h-3.5 text-verde-bosque" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
             </button>
           </div>
 
           <!-- Tutorial 3: Bordado -->
-          <div class="card-craft rounded-3xl p-6 flex flex-col justify-between">
+          <div class="card-craft rounded-3xl p-6 flex flex-col justify-between"
+               data-tutorial-id="bordado"
+               data-video-url="https://www.youtube.com/embed/5nm2k9He0l4?si=i1V6ET1TCP0aeSOw&autoplay=1"
+               data-tutorial-title="Simbología del Bordado Nativo"
+               data-tutorial-desc="Aprende la significación de la flora ribereña y los caminos del río plasmados en puntadas vivas.">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-xs font-bold text-marron-artesanal">
                 <span class="px-2.5 py-1 rounded-md bg-[#EBF2EE] text-verde-bosque">Video & Guía</span>
@@ -748,14 +770,23 @@
                 Aprende la significación de la flora ribereña y los caminos del río plasmados en puntadas vivas.
               </p>
             </div>
-            <button type="button" class="btn-open-tutorial mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-xs text-texto-oscuro bg-amarillo-mostaza hover:bg-mostaza-oscuro transition-colors flex items-center justify-center gap-1.5 shadow-sm" data-tutorial-id="bordado">
+            <button type="button" 
+                    class="btn-open-tutorial mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-xs text-texto-oscuro bg-amarillo-mostaza hover:bg-mostaza-oscuro transition-colors flex items-center justify-center gap-1.5 shadow-sm active:scale-95" 
+                    data-tutorial-id="bordado"
+                    data-video-url="https://www.youtube.com/embed/5nm2k9He0l4?si=i1V6ET1TCP0aeSOw&autoplay=1"
+                    data-tutorial-title="Simbología del Bordado Nativo"
+                    data-tutorial-desc="Aprende la significación de la flora ribereña y los caminos del río plasmados en puntadas vivas.">
               <span>Ver guía y video</span>
               <svg class="w-3.5 h-3.5 text-verde-bosque" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
             </button>
           </div>
 
           <!-- Tutorial 4: Cestería -->
-          <div class="card-craft rounded-3xl p-6 flex flex-col justify-between">
+          <div class="card-craft rounded-3xl p-6 flex flex-col justify-between"
+               data-tutorial-id="cesteria"
+               data-video-url="https://www.youtube.com/embed/eUWVZsXU6gc?si=5lxN_QM6WTu-k5CS&autoplay=1"
+               data-tutorial-title="Tejido Helicoidal con Chambira"
+               data-tutorial-desc="Torsión y anudado de fibra de palma amazónica para la creación de canastos resistentes y duraderos.">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-xs font-bold text-marron-artesanal">
                 <span class="px-2.5 py-1 rounded-md bg-[#FAF4E8] text-marron-artesanal">Video & Guía</span>
@@ -771,7 +802,12 @@
                 Torsión y anudado de fibra de palma amazónica para la creación de canastos resistentes y duraderos.
               </p>
             </div>
-            <button type="button" class="btn-open-tutorial mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-xs text-texto-oscuro bg-amarillo-mostaza hover:bg-mostaza-oscuro transition-colors flex items-center justify-center gap-1.5 shadow-sm" data-tutorial-id="cesteria">
+            <button type="button" 
+                    class="btn-open-tutorial mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-xs text-texto-oscuro bg-amarillo-mostaza hover:bg-mostaza-oscuro transition-colors flex items-center justify-center gap-1.5 shadow-sm active:scale-95" 
+                    data-tutorial-id="cesteria"
+                    data-video-url="https://www.youtube.com/embed/eUWVZsXU6gc?si=5lxN_QM6WTu-k5CS&autoplay=1"
+                    data-tutorial-title="Tejido Helicoidal con Chambira"
+                    data-tutorial-desc="Torsión y anudado de fibra de palma amazónica para la creación de canastos resistentes y duraderos.">
               <span>Ver guía y video</span>
               <svg class="w-3.5 h-3.5 text-verde-bosque" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
             </button>
@@ -1481,79 +1517,68 @@
   <!-- ======================================================== -->
   <!-- MODAL: REPRODUCTOR DEMO Y GUÍA PASO A PASO -->
   <!-- ======================================================== -->
-  <div id="modal-tutorial" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 modal-backdrop overflow-y-auto">
-    <div class="bg-blanco-crema rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-borde-tierra my-8 relative">
+  <div id="tutorial-modal" class="hidden fixed inset-0 z-50 items-center justify-center p-4 bg-black/75 backdrop-blur-sm modal-backdrop overflow-y-auto">
+    <div id="tutorial-modal-card" class="relative bg-blanco-crema rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border-2 border-borde-tierra my-auto max-h-[90vh] overflow-y-auto" style="position: relative; max-height: 90vh; overflow-y: auto;">
       
-      <!-- Botón Cerrar -->
-      <button type="button" id="modal-tutorial-close" class="absolute top-5 right-5 p-2 rounded-full text-gray-500 hover:text-verde-bosque hover:bg-beige-natural transition-colors" aria-label="Cerrar ventana">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      <!-- Botón circular "X" visible en la esquina superior derecha -->
+      <button type="button" 
+              id="tutorial-modal-close-btn" 
+              aria-label="Cerrar video" 
+              class="absolute top-4 right-4 z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-rose-100 hover:bg-rose-600 text-rose-700 hover:text-white border-2 border-rose-300 hover:border-rose-600 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer active:scale-95 focus:outline-none focus:ring-2 focus:ring-rose-500"
+              style="position: absolute; top: 1rem; right: 1rem; z-index: 50;">
+        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
       </button>
 
       <!-- Encabezado Modal -->
-      <div class="space-y-1 pr-8 mb-5">
-        <div class="flex items-center gap-2 text-xs font-bold text-marron-artesanal">
-          <span id="tutorial-modal-craft">Tejido tradicional</span> • <span id="tutorial-modal-level">Intermedio</span>
+      <div class="space-y-1.5 pr-14 mb-4">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#EBF2EE] text-verde-bosque border border-verde-bosque/20">
+          <span>🎥</span> Tutorial Comunitario
         </div>
         <h3 id="tutorial-modal-title" class="font-heading font-extrabold text-xl sm:text-2xl text-verde-bosque">
           Fundamentos del Tejido en Telar
         </h3>
-        <p class="text-xs text-gray-600 font-medium">
-          Guiado por: <strong id="tutorial-modal-docente" class="text-marron-artesanal">Mama Rosaura Quispe</strong> (<span id="tutorial-modal-duration">24 min</span>)
+        <p id="tutorial-modal-desc" class="text-xs sm:text-sm text-texto-oscuro/80 leading-relaxed">
+          Técnica de urdimbre y colocación de lizos para crear piezas textiles con tintes vegetales amazónicos.
         </p>
       </div>
 
-      <!-- Pantalla Demostrativa de Video (Verde Bosque & Mostaza) -->
-      <div class="video-screen rounded-2xl aspect-video w-full flex flex-col justify-between p-4 mb-6 shadow-inner text-white">
-        <div class="flex justify-between items-center text-xs text-white/80">
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amarillo-mostaza text-texto-oscuro font-bold text-[10px]">
-            ● EN VIVO DEMO
-          </span>
-          <span id="video-overlay-title" class="truncate max-w-[200px]">Guía Comunitaria</span>
-        </div>
-
-        <!-- Botón Central Play/Pausa -->
-        <div class="flex items-center justify-center">
-          <button type="button" id="video-play-btn" class="w-16 h-16 rounded-full bg-amarillo-mostaza hover:bg-mostaza-oscuro text-texto-oscuro flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all">
-            <svg id="video-play-icon" class="w-8 h-8 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </button>
-        </div>
-
-        <!-- Barra de Progreso y Tiempo -->
-        <div class="space-y-1.5">
-          <div class="w-full h-1.5 bg-white/30 rounded-full overflow-hidden">
-            <div id="video-progress-bar" class="video-progress-bar h-full bg-amarillo-mostaza w-0"></div>
-          </div>
-          <div class="flex justify-between text-[11px] text-white/90 font-mono">
-            <span id="video-current-time">00:00</span>
-            <span id="video-total-time">12:45</span>
-          </div>
-        </div>
+      <!-- Contenedor responsivo aspect-video con iframe -->
+      <div class="aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-borde-tierra bg-black relative mb-6">
+        <iframe 
+          id="tutorial-video-iframe" 
+          class="w-full h-full" 
+          src="" 
+          title="Reproductor de Video Tutorial" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+        </iframe>
       </div>
 
       <!-- Resumen y Guía Paso a Paso -->
-      <div class="space-y-5 text-left max-h-64 overflow-y-auto pr-1">
+      <div class="space-y-4 text-left max-h-56 overflow-y-auto pr-1">
         <div>
           <h4 class="text-xs font-bold text-verde-bosque uppercase tracking-wider mb-1">Descripción de la lección</h4>
-          <p id="tutorial-modal-summary" class="text-sm text-texto-oscuro/85 leading-relaxed"></p>
+          <p id="tutorial-modal-summary" class="text-xs sm:text-sm text-texto-oscuro/85 leading-relaxed"></p>
         </div>
 
         <!-- Materiales -->
-        <div class="bg-beige-natural p-4 rounded-2xl border border-borde-tierra">
+        <div class="bg-beige-natural p-3.5 rounded-2xl border border-borde-tierra">
           <h4 class="text-xs font-bold text-marron-artesanal uppercase tracking-wider mb-2">Materiales recomendados</h4>
-          <ul id="tutorial-modal-materials" class="space-y-1.5"></ul>
+          <ul id="tutorial-modal-materials" class="space-y-1.5 text-xs"></ul>
         </div>
 
         <!-- Pasos -->
         <div>
           <h4 class="text-xs font-bold text-verde-bosque uppercase tracking-wider mb-2">Pasos detallados de la técnica</h4>
-          <div id="tutorial-modal-steps" class="space-y-2.5"></div>
+          <div id="tutorial-modal-steps" class="space-y-2 text-xs"></div>
         </div>
 
         <!-- Consejo del Maestro -->
-        <div class="p-3.5 rounded-2xl bg-mostaza-suave border border-amarillo-mostaza/40 text-xs text-texto-oscuro leading-relaxed">
+        <div class="p-3 rounded-2xl bg-mostaza-suave border border-amarillo-mostaza/40 text-xs text-texto-oscuro leading-relaxed">
           <strong class="text-marron-artesanal">Consejo de la maestra/o:</strong> <span id="tutorial-modal-consejo"></span>
         </div>
       </div>
