@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabPresencialesBtn = document.getElementById('tab-presenciales-btn');
   const tabTutorialesBtn = document.getElementById('tab-tutoriales-btn');
   const viewPresenciales = document.getElementById('view-presenciales');
-  const viewTutoriales = document.getElementById('view-tutoriales');
+  const viewTutoriales = document.getElementById('tutorials-container') || document.getElementById('view-tutoriales');
 
   function setTalleresTab(active) {
     if (active === 'presenciales') {
@@ -224,128 +224,116 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  const modalTutorial = document.getElementById('modal-tutorial');
-  const btnCloseModalTutorial = document.getElementById('modal-tutorial-close');
-  const videoPlayBtn = document.getElementById('video-play-btn');
-  const videoPlayIcon = document.getElementById('video-play-icon');
-  const videoProgressBar = document.getElementById('video-progress-bar');
-  const videoCurrentTime = document.getElementById('video-current-time');
-  const videoTotalTime = document.getElementById('video-total-time');
-  let videoIsPlaying = false;
-  let videoInterval = null;
-  let simulatedSeconds = 0;
-  let currentTutorialTotalSeconds = 1440;
+  const tutorialModal = document.getElementById('tutorial-modal') || document.getElementById('modal-tutorial');
+  const tutorialCloseBtn = document.getElementById('tutorial-modal-close-btn') || document.getElementById('modal-tutorial-close');
+  const tutorialIframe = document.getElementById('tutorial-video-iframe');
+  const tutorialTitleEl = document.getElementById('tutorial-modal-title');
+  const tutorialDescEl = document.getElementById('tutorial-modal-desc');
 
-  function openTutorialModal(tutorialId) {
+  function openTutorialModal(videoUrl, title, desc, tutorialId) {
+    if (!tutorialModal) return;
+
     const data = tutorialesData[tutorialId] || tutorialesData['telar'];
-    
-    document.getElementById('tutorial-modal-title').textContent = data.titulo;
-    document.getElementById('tutorial-modal-craft').textContent = data.artesania;
-    document.getElementById('tutorial-modal-docente').textContent = data.docente;
-    document.getElementById('tutorial-modal-duration').textContent = data.duracion;
-    document.getElementById('tutorial-modal-level').textContent = data.nivel;
-    document.getElementById('tutorial-modal-summary').textContent = data.resumen;
-    document.getElementById('tutorial-modal-consejo').textContent = data.consejo;
 
-    // Actualizar imagen real del reproductor de video
-    const videoThumb = document.getElementById('video-thumbnail-img');
-    if (videoThumb && data.imagen) {
-      videoThumb.src = data.imagen;
+    if (tutorialTitleEl) {
+      tutorialTitleEl.textContent = title || (data && data.titulo) || '';
+    }
+    if (tutorialDescEl) {
+      tutorialDescEl.textContent = desc || (data && data.resumen) || '';
     }
 
-    // Materiales
-    const matList = document.getElementById('tutorial-modal-materials');
-    matList.innerHTML = data.materiales.map(m => `
-      <li class="flex items-start gap-2.5 text-sm text-[#1E1B26]/80">
-        <span class="w-1.5 h-1.5 rounded-full bg-marron-artesanal mt-2 shrink-0"></span>
-        <span>${m}</span>
-      </li>
-    `).join('');
+    if (tutorialIframe && videoUrl) {
+      tutorialIframe.src = videoUrl;
+    }
 
-    // Pasos
-    const pasosList = document.getElementById('tutorial-modal-steps');
-    pasosList.innerHTML = data.pasos.map((p, idx) => `
-      <div class="p-3.5 rounded-xl bg-blanco-crema border border-borde-tierra text-sm">
-        <span class="font-bold text-verde-bosque block mb-1">Etapa ${idx + 1}</span>
-        <p class="text-[#1E1B26]/90 leading-relaxed">${p}</p>
-      </div>
-    `).join('');
+    if (data) {
+      const craftEl = document.getElementById('tutorial-modal-craft');
+      if (craftEl && data.artesania) craftEl.textContent = data.artesania;
+      
+      const levelEl = document.getElementById('tutorial-modal-level');
+      if (levelEl && data.nivel) levelEl.textContent = data.nivel;
 
-    // Extraer minutos para la duración total del video
-    const matchMins = data.duracion.match(/(\d+)/);
-    const totalMinutes = matchMins ? parseInt(matchMins[1], 10) : 20;
-    currentTutorialTotalSeconds = totalMinutes * 60;
-    const formattedTotalTime = `${totalMinutes.toString().padStart(2, '0')}:00`;
+      const summaryEl = document.getElementById('tutorial-modal-summary');
+      if (summaryEl) summaryEl.textContent = data.resumen || desc || '';
 
-    // Reset video state
-    resetVideoPlayer(formattedTotalTime);
-    document.getElementById('video-overlay-title').textContent = data.titulo;
+      const matList = document.getElementById('tutorial-modal-materials');
+      if (matList && data.materiales) {
+        matList.innerHTML = data.materiales.map(m => `
+          <li class="flex items-start gap-2.5 text-xs text-[#1E1B26]/80">
+            <span class="w-1.5 h-1.5 rounded-full bg-marron-artesanal mt-1.5 shrink-0"></span>
+            <span>${m}</span>
+          </li>
+        `).join('');
+      }
 
-    modalTutorial.classList.remove('hidden');
+      const pasosList = document.getElementById('tutorial-modal-steps');
+      if (pasosList && data.pasos) {
+        pasosList.innerHTML = data.pasos.map((p, idx) => `
+          <div class="p-2.5 rounded-xl bg-blanco-crema border border-borde-tierra text-xs">
+            <span class="font-bold text-verde-bosque block mb-0.5">Etapa ${idx + 1}</span>
+            <p class="text-[#1E1B26]/90 leading-relaxed">${p}</p>
+          </div>
+        `).join('');
+      }
+
+      const consejoEl = document.getElementById('tutorial-modal-consejo');
+      if (consejoEl && data.consejo) consejoEl.textContent = data.consejo;
+    }
+
+    tutorialModal.classList.remove('hidden');
+    tutorialModal.classList.add('flex');
+    tutorialModal.scrollTop = 0;
+    const cardEl = document.getElementById('tutorial-modal-card');
+    if (cardEl) cardEl.scrollTop = 0;
     document.body.style.overflow = 'hidden';
   }
 
   function closeTutorialModal() {
-    modalTutorial.classList.add('hidden');
+    if (!tutorialModal) return;
+    tutorialModal.classList.add('hidden');
+    tutorialModal.classList.remove('flex');
     document.body.style.overflow = '';
-    resetVideoPlayer();
-  }
-
-  function resetVideoPlayer(totalTimeStr = '24:00') {
-    videoIsPlaying = false;
-    if (videoInterval) clearInterval(videoInterval);
-    simulatedSeconds = 0;
-    if (videoProgressBar) videoProgressBar.style.width = '0%';
-    if (videoCurrentTime) videoCurrentTime.textContent = '00:00';
-    if (videoTotalTime) videoTotalTime.textContent = totalTimeStr;
-    updatePlayButton();
-  }
-
-  function togglePlayVideo() {
-    videoIsPlaying = !videoIsPlaying;
-    updatePlayButton();
-
-    if (videoIsPlaying) {
-      videoInterval = setInterval(() => {
-        simulatedSeconds += 1;
-        if (simulatedSeconds > currentTutorialTotalSeconds) {
-          resetVideoPlayer(videoTotalTime.textContent);
-          return;
-        }
-        const pct = (simulatedSeconds / currentTutorialTotalSeconds) * 100;
-        if (videoProgressBar) videoProgressBar.style.width = `${pct}%`;
-        
-        const mins = Math.floor(simulatedSeconds / 60).toString().padStart(2, '0');
-        const secs = (simulatedSeconds % 60).toString().padStart(2, '0');
-        if (videoCurrentTime) videoCurrentTime.textContent = `${mins}:${secs}`;
-      }, 500);
-    } else {
-      if (videoInterval) clearInterval(videoInterval);
+    if (tutorialIframe) {
+      tutorialIframe.src = '';
     }
   }
 
-  function updatePlayButton() {
-    if (!videoPlayIcon) return;
-    if (videoIsPlaying) {
-      videoPlayIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />`;
-    } else {
-      videoPlayIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />`;
-    }
-  }
-
-  if (videoPlayBtn) {
-    videoPlayBtn.addEventListener('click', togglePlayVideo);
-  }
-
-  if (btnCloseModalTutorial) {
-    btnCloseModalTutorial.addEventListener('click', closeTutorialModal);
-  }
-
+  // Clic en botones .btn-open-tutorial para abrir el modal con el video correspondiente
   document.querySelectorAll('.btn-open-tutorial').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      const tutId = e.currentTarget.getAttribute('data-tutorial-id');
-      openTutorialModal(tutId);
+      const button = e.currentTarget;
+      const card = button.closest('.card-craft');
+      const videoUrl = button.getAttribute('data-video-url') || (card && card.getAttribute('data-video-url')) || '';
+      const title = button.getAttribute('data-tutorial-title') || (card && card.getAttribute('data-tutorial-title')) || '';
+      const desc = button.getAttribute('data-tutorial-desc') || (card && card.getAttribute('data-tutorial-desc')) || '';
+      const tutorialId = button.getAttribute('data-tutorial-id') || (card && card.getAttribute('data-tutorial-id')) || '';
+      openTutorialModal(videoUrl, title, desc, tutorialId);
     });
+  });
+
+  // Clic en la "X" para cerrar el modal
+  if (tutorialCloseBtn) {
+    tutorialCloseBtn.addEventListener('click', closeTutorialModal);
+  }
+
+  // Clic fuera del modal (en el backdrop) o en la "X" delegada para cerrar
+  if (tutorialModal) {
+    tutorialModal.addEventListener('click', (e) => {
+      if (e.target.closest('#tutorial-modal-close-btn')) {
+        closeTutorialModal();
+        return;
+      }
+      if (e.target === tutorialModal) {
+        closeTutorialModal();
+      }
+    });
+  }
+
+  // Cerrar al presionar la tecla Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && tutorialModal && !tutorialModal.classList.contains('hidden')) {
+      closeTutorialModal();
+    }
   });
 
   // ==========================================
