@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
       docente: 'Mama Rosaura Quispe',
       duracion: '24 minutos',
       nivel: 'Intermedio',
+      imagen: '/images/tutorial-telar.jpg',
       resumen: 'Aprende el urdido de hilos de algodón y lanas teñidas con cortezas nativas de Loreto, la colocación de lizos y el primer diseño del telar tradicional.',
       materiales: [
         'Telar de cintura de madera dura amazónica con espadas de batán',
@@ -158,6 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
       docente: 'Maestro Juan Poma',
       duracion: '18 minutos',
       nivel: 'Básico / Todos los niveles',
+      imagen: '/images/tutorial-ceramica.jpg',
       resumen: 'Técnica de rollo y pellizco para crear una múcura tradicional, seguida por el frotado con cantos rodados de río para lograr un bruñido impermeable sin esmalte.',
       materiales: [
         '1.5 kg de arcilla roja ribereña decantada y purificada',
@@ -180,6 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
       docente: 'Maestra Elena Mayhua',
       duracion: '32 minutos',
       nivel: 'Básico',
+      imagen: '/images/tutorial-bordado.jpg',
       resumen: 'Descubre los trazos iconográficos que narran la cosmovisión comunitaria: la flor de cantuta, la espiral del agua y los caminos de las cordilleras.',
       materiales: [
         'Tela de lino o tocuyo crudo de algodón nativo',
@@ -202,6 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
       docente: 'Don Braulio Champi',
       duracion: '20 minutos',
       nivel: 'Intermedio',
+      imagen: '/images/tutorial-cesteria.jpg',
       resumen: 'Manejo de fibras de chambira y tamshi: preparación, humedecido, torsión manual y tejido helicoidal para canastos utilitarios de gran resistencia.',
       materiales: [
         'Fibras vegetales hidratadas de palma chambira',
@@ -230,6 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let videoIsPlaying = false;
   let videoInterval = null;
   let simulatedSeconds = 0;
+  let currentTutorialTotalSeconds = 1440;
 
   function openTutorialModal(tutorialId) {
     const data = tutorialesData[tutorialId] || tutorialesData['telar'];
@@ -241,6 +246,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('tutorial-modal-level').textContent = data.nivel;
     document.getElementById('tutorial-modal-summary').textContent = data.resumen;
     document.getElementById('tutorial-modal-consejo').textContent = data.consejo;
+
+    // Actualizar imagen real del reproductor de video
+    const videoThumb = document.getElementById('video-thumbnail-img');
+    if (videoThumb && data.imagen) {
+      videoThumb.src = data.imagen;
+    }
 
     // Materiales
     const matList = document.getElementById('tutorial-modal-materials');
@@ -260,8 +271,14 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `).join('');
 
+    // Extraer minutos para la duración total del video
+    const matchMins = data.duracion.match(/(\d+)/);
+    const totalMinutes = matchMins ? parseInt(matchMins[1], 10) : 20;
+    currentTutorialTotalSeconds = totalMinutes * 60;
+    const formattedTotalTime = `${totalMinutes.toString().padStart(2, '0')}:00`;
+
     // Reset video state
-    resetVideoPlayer();
+    resetVideoPlayer(formattedTotalTime);
     document.getElementById('video-overlay-title').textContent = data.titulo;
 
     modalTutorial.classList.remove('hidden');
@@ -274,13 +291,13 @@ document.addEventListener('DOMContentLoaded', () => {
     resetVideoPlayer();
   }
 
-  function resetVideoPlayer() {
+  function resetVideoPlayer(totalTimeStr = '24:00') {
     videoIsPlaying = false;
     if (videoInterval) clearInterval(videoInterval);
     simulatedSeconds = 0;
     if (videoProgressBar) videoProgressBar.style.width = '0%';
     if (videoCurrentTime) videoCurrentTime.textContent = '00:00';
-    if (videoTotalTime) videoTotalTime.textContent = '12:45';
+    if (videoTotalTime) videoTotalTime.textContent = totalTimeStr;
     updatePlayButton();
   }
 
@@ -291,11 +308,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (videoIsPlaying) {
       videoInterval = setInterval(() => {
         simulatedSeconds += 1;
-        if (simulatedSeconds > 765) {
-          resetVideoPlayer();
+        if (simulatedSeconds > currentTutorialTotalSeconds) {
+          resetVideoPlayer(videoTotalTime.textContent);
           return;
         }
-        const pct = (simulatedSeconds / 765) * 100;
+        const pct = (simulatedSeconds / currentTutorialTotalSeconds) * 100;
         if (videoProgressBar) videoProgressBar.style.width = `${pct}%`;
         
         const mins = Math.floor(simulatedSeconds / 60).toString().padStart(2, '0');
